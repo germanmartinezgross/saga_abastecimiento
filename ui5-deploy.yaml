@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: andina.sagaabastecimiento
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://chpaingwdb1.koandina.ccf:8000/
+          client: "001"
+        app:
+          name: SAGAABAST
+          description: Abastecimiento de Almacén a Líneas de Producción
+          package: /ANDINA/FIORI
+          transport: DBFK901366
